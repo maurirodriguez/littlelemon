@@ -9,9 +9,17 @@ import SwiftUI
 
 @main
 struct LittleLemonAppApp: App {
+    @StateObject private var userViewModel = UserProfileViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            
+            if userViewModel.isAuthenticated {
+                HomeView(userViewModel: userViewModel)
+            } else {
+                OnboardingView(userViewModel: userViewModel)
+            }
+            
         }
     }
 }
