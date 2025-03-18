@@ -82,7 +82,7 @@ struct OnboardingView: View {
         if !firstname.isEmpty && !lastname.isEmpty
             && userViewModel.isValidEmail(email) {
            
-            let user = User(firstName: firstname, lastName: lastname, email: email, orderStatus: false, passwordChanges: false, specialOffers: false, newsLetters: false)
+            let user = User(firstName: firstname, lastName: lastname, email: email, orderStatus: orderStatus, passwordChanges: passwordChanges, specialOffers: specialOffers, newsLetters: newsletter)
              
             errorAlert = false
             

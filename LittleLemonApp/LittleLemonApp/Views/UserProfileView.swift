@@ -127,11 +127,7 @@ struct UserProfileView: View {
                 }
                 .padding()
               
-                Button("Log out") {
-                    userViewModel.logout()
-                }
-                .buttonStyle(YellowButtonWide())
-                Spacer(minLength: 20)
+               
                 HStack {
                     Button("Discard Changes") {
                         firstName = userViewModel.user?.firstName ?? ""
@@ -151,6 +147,7 @@ struct UserProfileView: View {
                             let user = User(firstName: firstName, lastName: lastName, email: email, orderStatus: orderStatus, passwordChanges: passwordChanges, specialOffers: specialOffers, newsLetters: newsletter)
                             
                             userViewModel.saveUser(user)
+                            userViewModel.loadUser()
                         }else{
                             errorAlert = true
                         }
@@ -160,7 +157,12 @@ struct UserProfileView: View {
                     }
                     .buttonStyle(GreenButton())
                 }
-                
+                Spacer(minLength: 20)
+                Button("Log out") {
+                    userViewModel.logout()
+                }
+                .buttonStyle(YellowButtonWide())
+             
             }
           }
           .onAppear {
